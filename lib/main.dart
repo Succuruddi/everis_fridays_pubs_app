@@ -53,8 +53,8 @@ Future<String>? futurePubs;
         }
         return ListView.builder(
           itemCount: _listPubs.length,
-          itemBuilder: (context, index) {
-            return PubCard(_listPubs[index]);
+          itemBuilder: (context, index) { 
+           return PubCard(pub: _listPubs[index],);
           },
         );
       },
@@ -64,12 +64,15 @@ Future<String>? futurePubs;
 }
 
 Future<String> getPubs(_listPubs) async {
-  final Response response = await http.get('http://192.168.68.111:1337/pubs');
+  final Response response = await http.get(Uri.parse('http://192.168.1.150:1337/api/pubs'));
 
   if (response.statusCode == 200) {
-    List<dynamic> pubsListRaw = jsonDecode(response.body);
+    dynamic body = jsonDecode(response.body);
+    List<dynamic> pubsListRaw= body[0];  // qui con data si prende tutto il pub
+
+
     for (var i = 0; i < pubsListRaw.length; i++) {
-      _listPubs.add(Pubs.fromJson(pubsListRaw[i]));
+      _listPubs.add(Pubs.fromJson(pubsListRaw[i].attributes)); //qui si prednono gli attributi del pub
     }
 
     return "Success!";

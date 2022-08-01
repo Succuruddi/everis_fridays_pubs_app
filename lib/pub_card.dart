@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'models/pubs.dart';
 
 class PubCard extends StatelessWidget {
-  const PubCard([
-    this.pub,
-  ]);
+ const PubCard({required this.pub,
+  });
 
-  final Pubs? pub;
+  final Pubs pub;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class PubCard extends StatelessWidget {
       title: Text(
           pub.name
         ),
-        subtitle: Text(pub.address!),
+        subtitle: Text(pub.address),
         trailing: Column(children:<Widget>[Text('Avg Price'),Text(pub.avgPrice.toString())]),
         contentPadding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
       ),

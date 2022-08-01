@@ -6,13 +6,11 @@ part of 'pubPicture.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PubPicture _$PubPictureFromJson(Map<String, dynamic> json) {
-  return PubPicture(
-    id: json['id'] as int,
-    name: json['name'] as String,
-    url: json['url'] as String,
-  );
-}
+PubPicture _$PubPictureFromJson(Map<String, dynamic> json) => PubPicture(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      url: json['url'] as String,
+    );
 
 Map<String, dynamic> _$PubPictureToJson(PubPicture instance) =>
     <String, dynamic>{

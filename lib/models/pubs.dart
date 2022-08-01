@@ -8,7 +8,7 @@ class Pubs {
   
   Pubs(
     {
-      required this.id,
+      this.id=0,
        required this.name,
       required this.address,
       required this.picture,
