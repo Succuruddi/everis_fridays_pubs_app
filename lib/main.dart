@@ -68,12 +68,19 @@ Future<String> getPubs(_listPubs) async {
 
   if (response.statusCode == 200) {
     dynamic body = jsonDecode(response.body);
-    List<dynamic> pubsListRaw= body[0];  // qui con data si prende tutto il pub
+    List<dynamic> pubsListRaw =
+
+body['data']; // qui con data si prende tutto il pub
 
 
-    for (var i = 0; i < pubsListRaw.length; i++) {
-      _listPubs.add(Pubs.fromJson(pubsListRaw[i].attributes)); //qui si prednono gli attributi del pub
-    }
+
+for (var i = 0; i < pubsListRaw.length; i++) {
+
+_listPubs.add(Pubs.fromJson(pubsListRaw[i]
+
+['attributes'])); //qui si prednono gli attributi del pub
+
+}
 
     return "Success!";
   } else {
